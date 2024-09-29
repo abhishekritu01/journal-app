@@ -25,6 +25,4 @@ public class JournalEntry {
 
     private LocalDateTime date;
 
-
-
 }

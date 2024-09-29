@@ -30,7 +30,7 @@ public class JournalEntryServices {
            journalEntryRepository.save(journalEntry);
            JournalEntry saved = journalEntryRepository.save(journalEntry);
            user.getJournalEntries().add(saved);
-           userServices.saveEntry(user);
+           userServices.saveUser(user);
        }catch (Exception e){
            e.printStackTrace();
        }
@@ -53,7 +53,7 @@ public class JournalEntryServices {
     public void deleteEntry(ObjectId id, String username) {
         User user = userServices.findByUsername(username);
         user.getJournalEntries().removeIf(journalEntry -> journalEntry.getId().equals(id));
-        userServices.saveEntry(user);
+        userServices.saveNewUser(user);
         journalEntryRepository.deleteById(id);
     }
 
@@ -61,4 +61,7 @@ public class JournalEntryServices {
         return journalEntryRepository.save(journalEntry);
 
     }
+
+
+
 }
